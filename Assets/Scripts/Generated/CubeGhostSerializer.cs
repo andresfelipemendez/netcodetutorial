@@ -9,9 +9,6 @@ public struct CubeGhostSerializer : IGhostSerializer<CubeSnapshotData>
 {
     private ComponentType componentTypeMovableCubeComponent;
     private ComponentType componentTypePhysicsCollider;
-    private ComponentType componentTypePhysicsDamping;
-    private ComponentType componentTypePhysicsMass;
-    private ComponentType componentTypePhysicsVelocity;
     private ComponentType componentTypeLocalToWorld;
     private ComponentType componentTypeRotation;
     private ComponentType componentTypeTranslation;
@@ -33,9 +30,6 @@ public struct CubeGhostSerializer : IGhostSerializer<CubeSnapshotData>
     {
         componentTypeMovableCubeComponent = ComponentType.ReadWrite<MovableCubeComponent>();
         componentTypePhysicsCollider = ComponentType.ReadWrite<PhysicsCollider>();
-        componentTypePhysicsDamping = ComponentType.ReadWrite<PhysicsDamping>();
-        componentTypePhysicsMass = ComponentType.ReadWrite<PhysicsMass>();
-        componentTypePhysicsVelocity = ComponentType.ReadWrite<PhysicsVelocity>();
         componentTypeLocalToWorld = ComponentType.ReadWrite<LocalToWorld>();
         componentTypeRotation = ComponentType.ReadWrite<Rotation>();
         componentTypeTranslation = ComponentType.ReadWrite<Translation>();
@@ -54,12 +48,6 @@ public struct CubeGhostSerializer : IGhostSerializer<CubeSnapshotData>
                 ++matches;
             if (components[i] == componentTypePhysicsCollider)
                 ++matches;
-            if (components[i] == componentTypePhysicsDamping)
-                ++matches;
-            if (components[i] == componentTypePhysicsMass)
-                ++matches;
-            if (components[i] == componentTypePhysicsVelocity)
-                ++matches;
             if (components[i] == componentTypeLocalToWorld)
                 ++matches;
             if (components[i] == componentTypeRotation)
@@ -67,7 +55,7 @@ public struct CubeGhostSerializer : IGhostSerializer<CubeSnapshotData>
             if (components[i] == componentTypeTranslation)
                 ++matches;
         }
-        return (matches == 8);
+        return (matches == 5);
     }
 
     public void CopyToSnapshot(ArchetypeChunk chunk, int ent, uint tick, ref CubeSnapshotData snapshot, GhostSerializerState serializerState)
